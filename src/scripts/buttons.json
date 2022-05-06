@@ -1,0 +1,130 @@
+{
+  "rowOne": [
+    {
+      "key": "ё",
+      "which": 192,
+      "code": "Backquote",
+      "upperRu": "Ё",
+      "en": "`",
+      "upperEn": "~",
+      "type": "letter"
+    },
+    {
+      "key": 1,
+      "which": 49,
+      "code": "Digit1",
+      "upperRu": "!",
+      "en": 1,
+      "upperEn": "!",
+      "type": "number"
+    },
+    {
+      "key": 2,
+      "which": 50,
+      "code": "Digit2",
+      "upperRu": "\"",
+      "en": 2,
+      "upperEn": "@",
+      "type": "number"
+    },
+    {
+      "key": 3,
+      "which": 51,
+      "code": "Digit3",
+      "upperRu": "№",
+      "en": 3,
+      "upperEn": "#",
+      "type": "number"
+    },
+    {
+      "key": 4,
+      "which": 52,
+      "code": "Digit4",
+      "upperRu": ";",
+      "en": 4,
+      "upperEn": "$",
+      "type": "number"
+    },
+    {
+      "key": 5,
+      "which": 53,
+      "code": "Digit5",
+      "upperRu": "%",
+      "en": 5,
+      "upperEn": "%",
+      "type": "number"
+    },
+    {
+      "key": 6,
+      "which": 54,
+      "code": "Digit6",
+      "upperRu": ":",
+      "en": 6,
+      "upperEn": "^",
+      "type": "number"
+    },
+    {
+      "key": 7,
+      "which": 55,
+      "code": "Digit7",
+      "upperRu": "?",
+      "en": 7,
+      "upperEn": "&",
+      "type": "number"
+    },
+    {
+      "key": 8,
+      "which": 56,
+      "code": "Digit8",
+      "upperRu": "*",
+      "en": 8,
+      "upperEn": "*",
+      "type": "number"
+    },
+    {
+      "key": 9,
+      "which": 57,
+      "code": "Digit9",
+      "upperRu": "(",
+      "en": 9,
+      "upperEn": "(",
+      "type": "number"
+    },
+    {
+      "key": 0,
+      "which": 48,
+      "code": "Digit0",
+      "upperRu": ")",
+      "en": 0,
+      "upperEn": ")",
+      "type": "number"
+    },
+    {
+      "key": "-",
+      "which": 189,
+      "code": "Minus",
+      "upperRu": "_",
+      "en": "-",
+      "upperEn": "_",
+      "type": "symbol"
+    },
+    {
+      "key": "=",
+      "which": 187,
+      "code": "Equal",
+      "upperRu": "+",
+      "en": "=",
+      "upperEn": "+",
+      "type": "symbol"
+    },
+    {
+      "key": "Backspace",
+      "which": 8,
+      "code": "Backspace",
+      "upperRu": "",
+      "en": "Backspace",
+      "upperEn": "",
+      "type": "symbol"
+    }
+  ]
+}

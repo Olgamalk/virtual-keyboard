@@ -1,15 +1,52 @@
 $color-pink: #f092db;
 $color-green: #92f0a2;
 
-.div {
-    width: 100px;
-    height: 100px;
-    background-color: $color-pink;
-    .div-child {
-        margin: 10px;
-        width: 50px;
-        height: 50px;
-        background-color: #92f0a2;
+.keyboard-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1022px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  margin: 20px auto 0;
+  background-color: #dddddd;
+  border-radius: 20px;
+  box-shadow: 2px 3px 20px rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  .row {
+    margin: 6px 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .key {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+			background-color: #eeeeee;
+			font-size: 13px;
+			text-align: center;
+			border-radius: 6px;
+			margin: 3px;
+			cursor: pointer;
+			width: 48px;
+			flex-wrap: wrap;
+			min-height: 36px;
+			// display: inline-block;
+			// text-transform: capitalize;
+			font-weight: 600;
+      position: relative;
+      span {
+        position: absolute;
+        top:  0;
+      }
     }
+    .active {
+      background-color: aqua;
+    }
+  }
 }
 
