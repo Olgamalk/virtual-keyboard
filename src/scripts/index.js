@@ -246,7 +246,7 @@ const buttons = [
     type: 'symbol',
   },
   {
-    key: ' \ ',
+    key: ' \\ ',
     which: 220,
     code: 'Backslash',
     upperRu: '/',
@@ -571,6 +571,12 @@ const buttons = [
   },
 ];
 
+const renderTextareaToDom = () => {
+  const textArea = document.createElement('textarea');
+  textArea.className = 'textarea-input';
+  document.body.prepend(textArea);
+};
+
 const renderContainerToDom = () => {
   const keyboardContainer = document.createElement('div');
   keyboardContainer.className = 'keyboard-container';
@@ -591,10 +597,10 @@ const generateButtons = () => {
   return buttonsArray;
 };
 
-const getMainContainer = () => {
-  const keyboardContainer = document.querySelector('.keyboard-container');
-  return keyboardContainer;
-};
+// const getMainContainer = () => {
+//   const keyboardContainer = document.querySelector('.keyboard-container');
+//   return keyboardContainer;
+// };
 
 const getButtons = () => {
   const buttonsItems = document.querySelectorAll('.key');
@@ -627,17 +633,18 @@ const renderButtonsToDom = () => {
   });
 };
 
-// const clickButton = document.querySelectorAll('.key');
-
 const selectedClickedButton = (clickButton) => {
   clickButton.classList.add('active');
   // clickButton.classList.remove('buttonClick');
 };
 
+const removeSelectedButton = (clickButton) => {
+  clickButton.classList.remove('active');
+};
+
 const addClickButton = () => {
-  //общий контейнер
   document.querySelector('.keyboard-container').addEventListener('mousedown', (e) => {
-    // if (e.target.classList.contains('class')) {
+    // if (e.target.classList.contains('active')) {
     //   let clickButton = e.target;
     //   // removeSelectedButton();
     //   selectedClickedButton(clickButton);
@@ -646,10 +653,14 @@ const addClickButton = () => {
     selectedClickedButton(clickButton);
     console.log(e.target);
   });
+  document.querySelector('.keyboard-container').addEventListener('mouseup', (e) => {
+    const clickButton = e.target;
+    removeSelectedButton(clickButton);
+  });
 };
 
-
 window.onload = function () {
+  renderTextareaToDom();
   renderContainerToDom();
   if (buttons) {
     renderButtonsToDom();

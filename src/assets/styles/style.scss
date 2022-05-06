@@ -36,12 +36,27 @@ $color-green: #92f0a2;
 			flex-wrap: wrap;
 			min-height: 36px;
 			// display: inline-block;
-			// text-transform: capitalize;
+			text-transform: capitalize;
 			font-weight: 600;
       position: relative;
+      &[data-key="8"] {
+        width: 90px;
+      }
+      &[data-key="32"] {
+        width: 353px;
+      }
+      &[data-key="16"] {
+        width: 90px;
+      }
+      &[data-key="20"],
+      &[data-key="13"] {
+        width: 70px;
+      }
       span {
+        font-size: 11px;
         position: absolute;
-        top:  0;
+        bottom:  5px;
+        right: 5px;
       }
     }
     .active {

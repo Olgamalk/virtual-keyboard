@@ -13,8 +13,8 @@ export default class Button {
   generateButton() {
     const button = document.createElement('div');
     button.className = 'key';
-    button.setAttribute('data-key', this.key);
-    button.textContent = `${this.upperRu}`;
+    button.setAttribute('data-key', this.which);
+    button.textContent = `${this.key}`;
 
     const textButton = document.createElement('span');
     textButton.className = 'upperKey';
