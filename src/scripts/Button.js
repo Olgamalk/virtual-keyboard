@@ -1,9 +1,10 @@
 export default class Button {
   constructor({
-    key, which, upperRu, en, upperEn, type,
+    key, which, code, upperRu, en, upperEn, type,
   }) {
     this.key = key;
     this.which = which;
+    this.code = code;
     this.upperRu = upperRu;
     this.en = en;
     this.upperEn = upperEn;

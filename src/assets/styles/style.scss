@@ -31,6 +31,7 @@ $color-green: #92f0a2;
 			text-align: center;
 			border-radius: 6px;
 			margin: 3px;
+      transition: all 0.07s;
 			cursor: pointer;
 			width: 48px;
 			flex-wrap: wrap;
@@ -59,7 +60,9 @@ $color-green: #92f0a2;
         right: 5px;
       }
     }
-    .active {
+    .click {
+      transform: scale(1.1);
+      border-color: #f092db;
       background-color: aqua;
     }
   }
