@@ -1,13 +1,11 @@
 export default class Button {
   constructor({
-    key, which, code, upperRu, en, upperEn, type,
+    key, which, code, upper, type,
   }) {
     this.key = key;
     this.which = which;
     this.code = code;
-    this.upperRu = upperRu;
-    this.en = en;
-    this.upperEn = upperEn;
+    this.upper = upper;
     this.type = type;
   }
 
@@ -15,11 +13,13 @@ export default class Button {
     const button = document.createElement('div');
     button.className = 'key';
     button.setAttribute('data-key', this.which);
+    button.setAttribute('data-code', this.code);
+    button.setAttribute('data-type', this.type);
     button.textContent = `${this.key}`;
 
     const textButton = document.createElement('span');
     textButton.className = 'upperKey';
-    textButton.textContent = `${this.upperEn}`;
+    textButton.textContent = `${this.upper}`;
 
     button.append(textButton);
     return button;
