@@ -70,9 +70,8 @@ const clickOnButton = () => {
 };
 
 const addClickOnButton = () => {
-  document.querySelector('.language').addEventListener('mousedown', (e) => {
-    const buttonLanguage = e.target;
-    clickOnButton(buttonLanguage);
+  document.querySelector('.language').addEventListener('click', () => {
+    clickOnButton();
   });
 };
 
@@ -80,11 +79,7 @@ const addButtonByMouse = (clickButton) => {
   const textarea = document.querySelector('textarea');
   const arrayValue = [];
   textarea.value += clickButton.innerHTML;
-  arrayValue.push(clickButton.innerHTML);
-
-  if (clickButton.textContent === 'Backspace') {
-    arrayValue.pop();
-  }
+  arrayValue.push(textarea.value);
 };
 
 const changeButtonCase = (e) => {
@@ -107,11 +102,17 @@ const removeSelectedButton = (clickButton) => {
 const addClickButton = () => {
   document.querySelector('.keyboard-container').addEventListener('mousedown', (e) => {
     const clickButton = e.target;
-    if (clickButton.classList.contains('key')) {
-      selectedClickedButton(clickButton);
+    if (clickButton.classList.contains('letter')) {
       addButtonByMouse(clickButton);
       changeButtonCase(clickButton);
     }
+    if (clickButton.classList.contains('number')) {
+      addButtonByMouse(clickButton);
+    }
+    if (clickButton.classList.contains('symbol')) {
+      addButtonByMouse(clickButton);
+    }
+    selectedClickedButton(clickButton);
   });
   document.querySelector('.keyboard-container').addEventListener('mouseup', (e) => {
     const clickButton = e.target;
@@ -125,6 +126,12 @@ const addClickByKeyboard = () => {
     keys.forEach((elem) => {
       elem.classList.add('click');
     });
+    const textarea = document.querySelector('textarea');
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      textarea.value += '    ';
+      textarea.focus();
+    }
     changeButtonCase(e);
   });
   document.addEventListener('keyup', (e) => {
