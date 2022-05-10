@@ -4,8 +4,9 @@ import btns from './buttons';
 import renderHeaderToDom from './Header';
 import renderContainerToDom from './Container';
 import renderTextareaToDom from './Textarea';
+import addLanguageButton from './LanguageButton';
 
-const language = btns.en;
+let language = btns.en;
 
 const generateButtons = () => {
   const buttonsArray = [];
@@ -38,13 +39,48 @@ const renderButtonsToDom = () => {
   generateButtons(btns).slice(54, 65).forEach((button) => {
     rowFive.append(button.generateButton());
   });
+  addLanguageButton();
+};
+
+const clearRow = () => {
+  const rowOne = document.querySelectorAll('.row')[0];
+  const rowTwo = document.querySelectorAll('.row')[1];
+  const rowThree = document.querySelectorAll('.row')[2];
+  const rowFour = document.querySelectorAll('.row')[3];
+  const rowFive = document.querySelectorAll('.row')[4];
+  rowOne.innerHTML = '';
+  rowTwo.innerHTML = '';
+  rowThree.innerHTML = '';
+  rowFour.innerHTML = '';
+  rowFive.innerHTML = '';
+};
+
+const clickOnButton = () => {
+  const lang = document.querySelector('.language');
+  if (lang) {
+    language = btns.ru;
+    lang.innerHTML = '';
+    clearRow();
+    renderButtonsToDom();
+  } else {
+    language = btns.en;
+    clearRow();
+    renderButtonsToDom();
+  }
+};
+
+const addClickOnButton = () => {
+  document.querySelector('.language').addEventListener('mousedown', (e) => {
+    const buttonLanguage = e.target;
+    clickOnButton(buttonLanguage);
+  });
 };
 
 const addButtonByMouse = (clickButton) => {
   const textarea = document.querySelector('textarea');
   const arrayValue = [];
-  textarea.value += clickButton.textContent;
-  arrayValue.push(clickButton.textContent);
+  textarea.value += clickButton.innerHTML;
+  arrayValue.push(clickButton.innerHTML);
 
   if (clickButton.textContent === 'Backspace') {
     arrayValue.pop();
@@ -71,9 +107,11 @@ const removeSelectedButton = (clickButton) => {
 const addClickButton = () => {
   document.querySelector('.keyboard-container').addEventListener('mousedown', (e) => {
     const clickButton = e.target;
-    selectedClickedButton(clickButton);
-    addButtonByMouse(clickButton);
-    changeButtonCase(clickButton);
+    if (clickButton.classList.contains('key')) {
+      selectedClickedButton(clickButton);
+      addButtonByMouse(clickButton);
+      changeButtonCase(clickButton);
+    }
   });
   document.querySelector('.keyboard-container').addEventListener('mouseup', (e) => {
     const clickButton = e.target;
@@ -104,6 +142,7 @@ window.onload = () => {
   if (btns) {
     renderButtonsToDom();
   }
+  addClickOnButton();
   addClickButton();
   addClickByKeyboard();
 };

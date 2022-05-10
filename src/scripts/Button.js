@@ -11,7 +11,7 @@ export default class Button {
 
   generateButton() {
     const button = document.createElement('div');
-    button.className = 'key';
+    button.className = `key ${this.type}`;
     button.setAttribute('data-key', this.which);
     button.setAttribute('data-code', this.code);
     button.setAttribute('data-type', this.type);
@@ -21,7 +21,6 @@ export default class Button {
     textButton.className = 'upperKey';
     textButton.textContent = `${this.upper}`;
 
-    button.append(textButton);
     return button;
   }
 }
