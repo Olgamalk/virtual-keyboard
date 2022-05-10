@@ -83,7 +83,7 @@ const addButtonByMouse = (clickButton) => {
 };
 
 const changeButtonCase = (e) => {
-  const keys = document.querySelectorAll('.key');
+  const keys = document.querySelectorAll('.letter');
   if (e.keyCode === 20) {
     keys.forEach((key) => {
       key.classList.toggle('lowercase');
@@ -104,7 +104,6 @@ const addClickButton = () => {
     const clickButton = e.target;
     if (clickButton.classList.contains('letter')) {
       addButtonByMouse(clickButton);
-      changeButtonCase(clickButton);
     }
     if (clickButton.classList.contains('number')) {
       addButtonByMouse(clickButton);
@@ -112,6 +111,7 @@ const addClickButton = () => {
     if (clickButton.classList.contains('symbol')) {
       addButtonByMouse(clickButton);
     }
+    changeButtonCase(clickButton);
     selectedClickedButton(clickButton);
   });
   document.querySelector('.keyboard-container').addEventListener('mouseup', (e) => {
