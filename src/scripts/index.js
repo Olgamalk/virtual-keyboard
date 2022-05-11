@@ -56,10 +56,8 @@ const clearRow = () => {
 };
 
 const clickOnButton = () => {
-  const lang = document.querySelector('.language');
-  if (lang) {
+  if (btns.en) {
     language = btns.ru;
-    lang.innerHTML = '';
     clearRow();
     renderButtonsToDom();
   } else {
@@ -69,17 +67,12 @@ const clickOnButton = () => {
   }
 };
 
-const addClickOnButton = () => {
-  document.querySelector('.language').addEventListener('click', () => {
-    clickOnButton();
-  });
-};
-
 const addButtonByMouse = (clickButton) => {
   const textarea = document.querySelector('textarea');
-  const arrayValue = [];
-  textarea.value += clickButton.innerHTML;
-  arrayValue.push(textarea.value);
+  if (!clickButton.classList.contains('spec') && !clickButton.classList.contains('keyboard-container') && !clickButton.classList.contains('row')) {
+    textarea.value += clickButton.innerHTML;
+  }
+  return textarea.value;
 };
 
 const changeButtonCase = (e) => {
@@ -99,19 +92,19 @@ const removeSelectedButton = (clickButton) => {
   clickButton.classList.remove('click');
 };
 
+function changeLanguage() {
+  document.querySelector('.language').addEventListener('click', () => {
+    clickOnButton();
+  });
+}
+
 const addClickButton = () => {
   document.querySelector('.keyboard-container').addEventListener('mousedown', (e) => {
     const clickButton = e.target;
-    if (clickButton.classList.contains('letter')) {
+    if (!clickButton.classList.contains('spec') && !clickButton.classList.contains('keyboard-container')) {
       addButtonByMouse(clickButton);
     }
-    if (clickButton.classList.contains('number')) {
-      addButtonByMouse(clickButton);
-    }
-    if (clickButton.classList.contains('symbol')) {
-      addButtonByMouse(clickButton);
-    }
-    changeButtonCase(clickButton);
+    changeButtonCase(e);
     selectedClickedButton(clickButton);
   });
   document.querySelector('.keyboard-container').addEventListener('mouseup', (e) => {
@@ -120,18 +113,40 @@ const addClickButton = () => {
   });
 };
 
+const changeShift = () => {
+  const letters = document.querySelectorAll('.letter');
+  letters.forEach((letter) => {
+    letter.classList.toggle('lowercase');
+  });
+};
+
+const turnOnKeyboard = (e) => {
+  const textarea = document.querySelector('textarea');
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    textarea.value += '    ';
+    textarea.focus();
+  }
+  if (e.code === 'Alt' || e.code === 'AltGr') {
+    e.preventDefault();
+  }
+  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+    changeShift();
+  }
+  if (e.code === 'Space') {
+    e.preventDefault();
+    textarea.value += ' ';
+  }
+  textarea.focus();
+};
+
 const addClickByKeyboard = () => {
   document.addEventListener('keydown', (e) => {
     const keys = document.querySelectorAll(`.key[data-code="${e.code}"]`);
     keys.forEach((elem) => {
       elem.classList.add('click');
     });
-    const textarea = document.querySelector('textarea');
-    if (e.key === 'Tab') {
-      e.preventDefault();
-      textarea.value += '    ';
-      textarea.focus();
-    }
+    turnOnKeyboard(e);
     changeButtonCase(e);
   });
   document.addEventListener('keyup', (e) => {
@@ -139,6 +154,9 @@ const addClickByKeyboard = () => {
     keys.forEach((elem) => {
       elem.classList.remove('click');
     });
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      changeShift();
+    }
   });
 };
 
@@ -149,7 +167,7 @@ window.onload = () => {
   if (btns) {
     renderButtonsToDom();
   }
-  addClickOnButton();
   addClickButton();
   addClickByKeyboard();
+  changeLanguage();
 };

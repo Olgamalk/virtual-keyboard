@@ -38,7 +38,8 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    .key {
+    .key,
+    .language {
       display: flex;
       align-items: center;
       justify-content: center;

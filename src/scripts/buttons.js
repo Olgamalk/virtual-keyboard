@@ -204,7 +204,7 @@ const btns = {
       type: 'spec',
     },
     {
-      key: 'Ф',
+      key: 'ф',
       which: 65,
       code: 'KeyA',
       upper: 'Ф',
