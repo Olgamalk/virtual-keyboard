@@ -92,11 +92,28 @@ const removeSelectedButton = (clickButton) => {
   clickButton.classList.remove('click');
 };
 
-function changeLanguage() {
+const changeLanguage = () => {
   document.querySelector('.language').addEventListener('click', () => {
     clickOnButton();
   });
-}
+};
+
+const upLettersByMouse = () => {
+  document.querySelectorAll('[data-key="16"]').forEach((elem) => {
+    elem.addEventListener('click', () => {
+      const keys = document.querySelectorAll('.letter');
+      keys.forEach((key) => {
+        key.classList.toggle('lowercase');
+      });
+    });
+  });
+  document.querySelector('[data-key="20"]').addEventListener('click', () => {
+    const keys = document.querySelectorAll('.letter');
+    keys.forEach((key) => {
+      key.classList.toggle('lowercase');
+    });
+  });
+};
 
 const addClickButton = () => {
   document.querySelector('.keyboard-container').addEventListener('mousedown', (e) => {
@@ -111,6 +128,8 @@ const addClickButton = () => {
     const clickButton = e.target;
     removeSelectedButton(clickButton);
   });
+  changeLanguage();
+  upLettersByMouse();
 };
 
 const changeShift = () => {
@@ -169,5 +188,6 @@ window.onload = () => {
   }
   addClickButton();
   addClickByKeyboard();
-  changeLanguage();
+  // changeLanguage();
+  // upLettersByMouse();
 };
