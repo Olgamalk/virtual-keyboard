@@ -1,0 +1,95 @@
+$color-pink: #f092db;
+$color-green: #92f0a2;
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  text-align: center;
+  color: #7a797a;
+}
+
+textarea {
+  display: flex;
+  // width: 1022px;
+  // height: 120px;
+  border: 2px solid #d4d3d4;
+  margin: 20px auto 0;
+}
+
+.keyboard-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1022px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  margin: 20px auto 0;
+  background-color: #dddddd;
+  border-radius: 20px;
+  box-shadow: 2px 3px 20px rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  .row {
+    margin: 6px 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .key,
+    .language {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+			background-color: #eeeeee;
+			font-size: 13px;
+			text-align: center;
+			border-radius: 6px;
+			margin: 3px;
+      transition: all 0.07s;
+			cursor: pointer;
+			width: 48px;
+			flex-wrap: wrap;
+			min-height: 36px;
+      color: #8d8b8b;
+			// text-transform: capitalize;
+			font-weight: 600;
+      position: relative;
+      &[data-key="8"] {
+        width: 90px;
+      }
+      &[data-key="32"] {
+        width: 353px;
+      }
+      &[data-key="16"] {
+        width: 90px;
+      }
+      &[data-key="20"],
+      &[data-key="13"] {
+        width: 70px;
+      }
+      span {
+        font-size: 11px;
+        position: absolute;
+        bottom:  5px;
+        right: 5px;
+      }
+      &:hover {
+        background-color: #bebebe;
+      }
+    }
+    
+    .click {
+      transform: scale(1.05);
+      box-shadow: 0px 1px 3px;
+      background-color: #bebebe;
+    }
+    .lowercase {
+      text-transform: uppercase;
+    }
+  }
+}
+
